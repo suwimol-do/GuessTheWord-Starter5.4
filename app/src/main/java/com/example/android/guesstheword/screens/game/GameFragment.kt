@@ -63,7 +63,7 @@ class GameFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
-
+        binding.gameViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
 
@@ -76,26 +76,11 @@ class GameFragment : Fragment() {
 
     }
 
-
-
-
-
-
-
-    /** Methods for updating the UI **/
-
-    private fun updateWordText() {
-        binding.wordText.text = viewModel.word.value
-    }
-
-    private fun updateScoreText() {
-        binding.scoreText.text = viewModel.score.value.toString()
-    }
-
     private fun gameFinished() {
         Toast.makeText(activity, "Game has just finished", Toast.LENGTH_SHORT).show()
         val action = GameFragmentDirections.actionGameToScore()
-        action.score = viewModel.score.value ?: 0
-        NavHostFragment.findNavController(this).navigate(action)
+        action.score = viewModel.score.value?:0
+        findNavController(this).navigate(action)
+        viewModel.onGameFinishComplete()
     }
 }
