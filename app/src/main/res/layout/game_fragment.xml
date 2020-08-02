@@ -57,7 +57,7 @@
             android:fontFamily="sans-serif"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@color/black_text_color"
-            android:textSize="34sp"
+            android:textSize="32sp"
             android:textStyle="normal"
             android:text="@{@string/quote_format(gameViewModel.word)}"
             app:layout_constraintBottom_toTopOf="@+id/score_text"
